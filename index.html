@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="/public/style.css" />
+  </head>
+  <body>
+    <nav class="nav-bar">
+      <h3>Github Repository Search App :</h3>
+      <form id="myform" autocomplete="off">
+        <div class="form-group">
+          <input type="text" class="form-input" id="search" />
+          <button class="button" onclick="performSearch(event)">
+            Search User
+          </button>
+        </div>
+      </form>
+    </nav>
+    <div class="body-outer">
+      <div class="body-inner">
+        <div class="profile">profile</div>
+        <div class="card-outsie" id="card-body"></div>
+        <!-- <div class="card" id="card-container">
+          <div class="card-header" id="reponame">hifi</div>
+          <div class="description" id="repodesc">fjkd</div>
+          <div class="language" id="repolang">kdjfk</div>
+        </div> -->
+      </div>
+    </div>
+    <script defer src="/public/script.js"></script>
+  </body>
+</html>
