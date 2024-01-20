@@ -52,8 +52,8 @@ body {
     justify-content: center;
     /* border: 2px solid black; */
     /* height: 90%;/ */
-    width: 90%;
-    border: 2px solid white;
+    width: 85%;
+    /* border: 2px solid white; */
     /* flex-wrap: wrap; */
     flex-direction: row;
     gap: 2%;
@@ -63,22 +63,31 @@ body {
     display: flex;
     align-items: center;
     justify-content: flex-start;
-    border: 2px solid rgb(223, 39, 39);
+    /* border: 2px solid rgb(223, 39, 39); */
     /* height: 90%;/ */
-    width: 70%;
+    width: 75%;
     /* border: 2px solid black; */
     /* flex-wrap: wrap; */
-    flex-direction: row;
-    gap: 20px;
+    flex-direction: column;
+    gap: 10px;
 }
 
 .profile {
     display: flex;
-    width: 30%;
-    border: 2px solid gray;
+    width: 25%;
+    /* border: 2px solid gray; */
+    margin-top: 30px;
+    align-items: flex-start;
+    justify-content: center;
+    flex-direction: column;
 }
 
-
+.profilename {
+    margin-top: 30px;
+    font-weight: bold;
+    color: rgb(231, 229, 229);
+    font-size: 30px;
+}
 
 
 .card {
@@ -129,4 +138,44 @@ body {
     color: rgb(218, 217, 217);
     font-weight: 500;
 
+}
+
+.user-img {
+    border-radius: 50%;
+    border: 2px solid skyblue;
+    width: 100%;
+
+}
+
+.loader {
+    border: 5px solid #636060;
+    border-radius: 50%;
+    border-top: 5px solid rgb(18, 115, 252);
+    width: 120px;
+    height: 120px;
+    -webkit-animation: spin 1s linear infinite;
+    /* Safari */
+    animation: spin 1s linear infinite;
+    margin-top: 27%;
+    margin-right: 45%;
+}
+
+@-webkit-keyframes spin {
+    0% {
+        -webkit-transform: rotate(0deg);
+    }
+
+    100% {
+        -webkit-transform: rotate(360deg);
+    }
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
 }
