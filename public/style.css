@@ -13,12 +13,13 @@ body {
 .nav-bar {
     display: flex;
     margin-bottom: 10px;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
     border-bottom: 1px solid rgb(173, 169, 255);
     flex-wrap: wrap;
     /* border: 2px solid black; */
-    /* gap: 2px; */
+    gap: 20px;
+    padding: 0% 14%;
 }
 
 .nav-bar input {
@@ -75,6 +76,14 @@ body {
     gap: 10px;
 }
 
+.form-group {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+
+}
+
 .profile {
     display: flex;
     width: 25%;
@@ -116,6 +125,9 @@ body {
     color: rgb(104 152 255);
     font-weight: bold;
     font-size: 25px;
+    /* border: 2px solid yellow; */
+
+
     /* border-bottom: 1px solid rgb(173, 169, 255); */
 
 
@@ -187,7 +199,7 @@ body {
     /* border: 2px solid white; */
     justify-content: center;
     align-items: center;
-    margin: 0px 0px 40px 0px;
+    margin: -1px 0px 40px 0px;
     border-top: 1px solid rgb(183, 180, 180);
 }
 
@@ -215,6 +227,40 @@ body {
 
 }
 
+.profileinfo {
+    padding: 2px;
+    color: #e2e0e0;
+    margin: 4px 0px;
+}
+
+.anchor {
+    text-decoration: none;
+    color: inherit;
+    /* border: 2px solid white; */
+    box-sizing: border-box;
+    padding: 10px 0px;
+}
+
+.anchor:hover {
+    color: #aac9f7;
+}
+
+#initial {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* border: 2px solid wheat; */
+    margin-top: 10%;
+}
+
+.dropdown {
+    font-weight: bold;
+}
+
+#repoSelector {
+    width: 50px;
+    height: 30px;
+}
 
 @-webkit-keyframes spin {
     0% {
