@@ -1,6 +1,8 @@
 // const {userData} from './constant.js'
 let currentPage = 1;
 let itemsPerPage = 10;
+let repodata = "";
+const container = document.getElementById("card-body");
 
 function displaySelectedRepo() {
   // Get the selected value from the dropdown
@@ -8,6 +10,11 @@ function displaySelectedRepo() {
 
   // Display a message with the selected repository number
   itemsPerPage = selectedRepo;
+  if (repodata !== "") {
+    currentPage = 1;
+    printRepo(repodata, container, currentPage);
+    updatePaginationButtons(repodata, container);
+  }
   // alert("Selected Repository: " + selectedRepo);
 }
 
@@ -16,7 +23,7 @@ async function performSearch(event) {
   var search = document.getElementById("search").value;
   var originalName = search.split(" ").join("");
 
-  const container = document.getElementById("card-body");
+  // const container = document.getElementById("card-body");
   const profileContainer = document.getElementById("profileID");
   const divToRemove = document.getElementById("initial");
   if (divToRemove) {
@@ -30,6 +37,18 @@ async function performSearch(event) {
   container.appendChild(loader);
 
   const data = await fetchData(originalName);
+  console.log("data; ", data);
+  if (data === undefined) {
+    console.log(data);
+    const invlaiduser = document.createElement("div");
+    invlaiduser.classList.add("invlaiduser");
+    invlaiduser.textContent = "Invalid user";
+    container.appendChild(invlaiduser);
+    container.removeChild(loader);
+
+    return;
+  }
+  repodata = data;
   const profileData = await fetchProfileData(originalName);
   container.removeChild(loader);
 
@@ -47,16 +66,6 @@ async function performSearch(event) {
   event.target.form.reset();
 }
 
-// "site_admin": false,
-// "name": null,
-// "company": null,
-// "blog": "",
-// "location": null,
-// "email": null,
-// "hireable": null,
-// "bio": null,
-// "twitter_username": null,
-
 function printProfile(profileData, profileContainer) {
   const image = document.createElement("img");
   image.classList.add("user-img");
@@ -71,7 +80,7 @@ function printProfile(profileData, profileContainer) {
   const company1 = document.createElement("div");
   company1.classList.add("profileinfo");
   company1.textContent =
-    profileData?.company === null ? "HIII" : "Company: " + profileData?.company;
+    profileData?.company === null ? "" : "Company: " + profileData?.company;
   const location1 = document.createElement("div");
   location1.classList.add("profileinfo");
   location1.textContent =
@@ -136,7 +145,7 @@ async function printRepo(data, container, page) {
 async function fetchData(originalName) {
   try {
     const response = await fetch(
-      "https://api.github.com/users/" + originalName + "/repos?per_page=20" // ?per_page=10
+      "https://api.github.com/users/" + originalName + "/repos" // ?per_page=10
     );
 
     if (!response.ok) {
@@ -155,15 +164,25 @@ async function fetchProfileData(originalName) {
     const response = await fetch(
       "https://api.github.com/users/" + originalName
     );
+    console.log(typeof response.status);
+
+    // if (response.status === 404) {
+    //   console.log("yes");
+    //   return "Invalid User";
+    // }
+
+    // console.log("not return ");
     if (!response.ok) {
+      console.log("response");
       throw new Error(`HTTP error! Status: ${response.status}`);
     }
-    // https://api.github.com/users/abhijeet-crypto
+
     const profileData2 = await response.json();
-    // console.log(profileData2);
+
     return profileData2;
   } catch (error) {
     console.error("Error fetching profile data:", error);
+    return "Invalid User";
   }
 }
 

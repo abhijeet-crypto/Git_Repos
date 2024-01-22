@@ -262,6 +262,12 @@ body {
     height: 30px;
 }
 
+.invlaiduser {
+    margin-top: 15%;
+    font-size: 50px;
+    margin-right: 37%;
+}
+
 @-webkit-keyframes spin {
     0% {
         -webkit-transform: rotate(0deg);
